@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Por que a Coreia? - Meu Intercâmbio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ==============================
+           1. ESTILOS GERAIS E CORES BASE
+           ============================== */
+        :root {
+            --coreia-vermelho: #CD2E3A;
+            --coreia-azul: #0047A0;
+            --fundo-preto: #000000; 
+            --texto-claro: #ffffff;
+            --texto-cinza: #a0a0a0;
+            --tamanho-sidebar: 300px;
+        }
+
+        body {
+            background-color: var(--fundo-preto);
+            color: var(--texto-claro);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ==============================
+           2. MENU LATERAL (Idêntico ao anterior)
+           ============================== */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .bandeira-icone {
+            font-size: 2em;
+            color: var(--coreia-azul);
+            position: relative;
+        }
+        .bandeira-icone::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--coreia-vermelho);
+            border-radius: 50%;
+            top: -5px;
+            right: -5px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: calc(-1 * var(--tamanho-sidebar));
+            width: var(--tamanho-sidebar);
+            height: 100vh;
+            background-color: var(--fundo-preto);
+            z-index: 999;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding-top: 100px;
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0 20px;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: var(--texto-cinza);
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            border-radius: 12px;
+            background: transparent;
+            transition: transform 0.3s, box-shadow 0.3s, color 0.3s, background 0.3s;
+        }
+
+        .sidebar a i {
+            font-size: 1.4em;
+            transition: transform 0.3s, text-shadow 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: white;
+            transform: scale(1.08); 
+            background-color: rgba(20, 20, 20, 0.9);
+            box-shadow: 
+                -10px 10px 30px rgba(0, 71, 160, 0.5), 
+                10px -10px 30px rgba(205, 46, 58, 0.5); 
+            z-index: 10;
+            position: relative;
+        }
+
+        .sidebar a:hover i {
+            transform: scale(1.1);
+        }
+
+        /* ==============================
+           3. CONTEÚDO DOS CARTÕES
+           ============================== */
+        .conteudo-principal {
+            flex: 1;
+            padding: 100px 40px 50px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .titulo-pagina {
+            font-size: 2.8em;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, var(--texto-claro), var(--texto-cinza));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        /* O Grid que vai organizar os cartões lado a lado no PC */
+        .grid-motivos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            max-width: 1000px;
+        }
+
+        /* O visual de cada Cartão individual */
+        .cartao {
+            background-color: #080808;
+            border-radius: 15px;
+            padding: 30px;
+            width: 280px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+            border: 1px solid #151515;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* A linha colorida no topo de cada cartão */
+        .cartao::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--coreia-azul), var(--coreia-vermelho));
+            opacity: 0.5;
+            transition: opacity 0.4s ease;
+        }
+
+        .cartao:hover {
+            transform: translateY(-10px); /* O cartão pula para cima */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9),
+                        0 0 20px rgba(205, 46, 58, 0.1); /* Brilho vermelho no fundo */
+        }
+
+        .cartao:hover::before {
+            opacity: 1; /* A linha do topo brilha forte */
+        }
+
+        .cartao i {
+            font-size: 2.5em;
+            color: var(--coreia-azul);
+            margin-bottom: 20px;
+            transition: color 0.4s ease;
+        }
+
+        .cartao:hover i {
+            color: var(--coreia-vermelho); /* O ícone muda de cor! */
+        }
+
+        .cartao h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.5em;
+        }
+
+        .cartao p {
+            color: var(--texto-cinza);
+            line-height: 1.6;
+            font-size: 1em;
+            margin: 0;
+        }
+
+        /* ==============================
+           4. RODAPÉ
+           ============================== */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--fundo-preto);
+            color: #444; 
+            z-index: 10;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" onclick="toggleMenu()" id="btn-bandeira">
+        <span class="bandeira-icone">🇰🇷</span>
+    </div>
+
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-home"></i> 
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="sobre.html">
+                    <i class="fas fa-user-astronaut"></i> 
+                    <span>Sobre Mim</span>
+                </a>
+            </li>
+            <li>
+                <a href="por-que-coreia.html">
+                    <i class="fas fa-map-marked-alt"></i> 
+                    <span>Por que a Coreia?</span>
+                </a>
+            </li>
+            <li>
+                <a href="meus-objetivos.html">
+                    <i class="fas fa-crosshairs"></i> 
+                    <span>Objetivos</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="conteudo-principal">
+        <h1 class="titulo-pagina">Por que escolhi a Coreia do Sul?</h1>
+        
+        <div class="grid-motivos">
+            <div class="cartao">
+                <i class="fas fa-microchip"></i>
+                <h3>Tecnologia</h3>
+                <p>O país é um dos maiores polos de inovação tecnológica do mundo. Estar perto desse avanço é essencial para o meu crescimento como desenvolvedor.</p>
+            </div>
+
+            <div class="cartao">
+                <i class="fas fa-yin-yang"></i>
+                <h3>Cultura & História</h3>
+                <p>O equilíbrio perfeito entre o tradicional e o moderno. Uma cultura rica em respeito, disciplina e arte que sempre me fascinou profundamente.</p>
+            </div>
+
+            <div class="cartao">
+                <i class="fas fa-university"></i>
+                <h3>Educação de Ponta</h3>
+                <p>As universidades de Seul (as famosas SKY) possuem um rigor acadêmico incrível. É o ambiente perfeito para me desafiar e ir além da minha zona de conforto.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Criado por [Seu Nome] - Focado no futuro!</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const btnBandeira = document.getElementById('btn-bandeira');
+            
+            if (!sidebar.contains(event.target) && !btnBandeira.contains(event.target)) {
+                if (sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

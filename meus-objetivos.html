@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetivos - Intercâmbio Coreia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ==============================
+           1. ESTILOS GERAIS E CORES (Iguais à Home)
+           ============================== */
+        :root {
+            --coreia-vermelho: #CD2E3A;
+            --coreia-azul: #0047A0;
+            --fundo-preto: #000000; 
+            --texto-claro: #ffffff;
+            --texto-cinza: #a0a0a0;
+            --tamanho-sidebar: 300px;
+        }
+
+        body {
+            background-color: var(--fundo-preto);
+            color: var(--texto-claro);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ==============================
+           2. MENU LATERAL (Igual à Home)
+           ============================== */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .bandeira-icone {
+            font-size: 2em;
+            color: var(--coreia-azul);
+            position: relative;
+        }
+        .bandeira-icone::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--coreia-vermelho);
+            border-radius: 50%;
+            top: -5px;
+            right: -5px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: calc(-1 * var(--tamanho-sidebar));
+            width: var(--tamanho-sidebar);
+            height: 100vh;
+            background-color: var(--fundo-preto);
+            z-index: 999;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding-top: 100px;
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0 20px;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: var(--texto-cinza);
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            border-radius: 12px;
+            background: transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, background 0.3s ease;
+        }
+
+        .sidebar a i {
+            font-size: 1.4em;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            color: white;
+            transform: scale(1.08); 
+            background-color: rgba(20, 20, 20, 0.9);
+            box-shadow: 
+                -10px 10px 30px rgba(0, 71, 160, 0.5), 
+                10px -10px 30px rgba(205, 46, 58, 0.5); 
+            z-index: 10;
+            position: relative;
+        }
+
+        .sidebar a:hover i {
+            transform: scale(1.1);
+        }
+
+        /* ==============================
+           3. CONTEÚDO "OBJETIVOS"
+           ============================== */
+        .conteudo-principal {
+            flex: 1; /* Faz o conteúdo ocupar o espaço e empurrar o rodapé pro fim */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 20px 50px 20px; /* Espaço pro botão do menu não cobrir o texto */
+        }
+
+        .caixa-texto {
+            max-width: 800px;
+            background-color: #0a0a0a; /* Um preto pouquíssimo mais claro que o fundo */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border-left: 4px solid var(--coreia-vermelho); /* Detalhe vermelho */
+            position: relative;
+        }
+
+        .foto-rodape-sobre {
+            text-align: center; /* Centraliza a foto perfeitamente */
+            margin-top: 40px;   /* Dá um respiro entre o texto e a imagem */
+            padding-top: 30px;
+            border-top: 1px solid #222; /* Uma linha bem escura e sutil para separar */
+        }
+
+        .foto-rodape-sobre img {
+            max-width: 100%; /* Garante que a foto não vaze da caixa preta */
+            height: auto;
+            border-radius: 15px; /* Bordas arredondadas modernas */
+            opacity: 0.8; /* Deixa a foto ligeiramente escura para combinar com o site */
+            
+            /* Uma sombra forte e uma bordinha azul da bandeira na base */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+            border-bottom: 3px solid var(--coreia-azul);
+            
+            /* Prepara o efeito de hover */
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .foto-rodape-sobre img:hover {
+            opacity: 1; /* A foto acende com brilho total */
+            transform: scale(1.02); /* Dá um zoom bem de leve */
+            border-bottom: 3px solid var(--coreia-vermelho); /* A linha muda para vermelho! */
+        }
+
+        .caixa-texto::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 15px;
+            box-shadow: inset 0 0 20px rgba(255,255,255,0.02);
+            pointer-events: none;
+        }
+
+        .caixa-texto h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-top: 0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .caixa-texto h1 i {
+            color: var(--coreia-azul); /* Detalhe azul no ícone do título */
+        }
+
+        .caixa-texto p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--texto-cinza);
+            margin-bottom: 20px;
+        }
+
+        .destaque {
+            color: white;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--fundo-preto);
+            color: #444; 
+            z-index: 10;
+        }
+
+    .fundo-cinematografico {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95)), url('minha-foto.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; 
+        width: 100%;
+        min-height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 15px;
+        border-top: 2px solid var(--coreia-vermelho);
+        border-bottom: 2px solid var(--coreia-azul);
+        margin: 40px 0;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.9);
+    }
+
+    .conteudo-fundo h2 {
+        color: white;
+        font-size: 2.5em;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 2px; 
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .conteudo-fundo p {
+        color: var(--texto-cinza);
+        font-size: 1.2em;
+        margin-top: 10px;
+    }
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" onclick="toggleMenu()" id="btn-bandeira">
+        <span class="bandeira-icone">🇰🇷</span>
+    </div>
+
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-home"></i> 
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="sobre.html">
+                    <i class="fas fa-user-astronaut"></i> 
+                    <span>Sobre Mim</span>
+                </a>
+            </li>
+            <li>
+                <a href="por-que-coreia.html">
+                    <i class="fas fa-map-marked-alt"></i> 
+                    <span>Por que a Coreia?</span>
+                </a>
+            </li>
+            <li>
+                <a href="meus-objetivos.html">
+                    <i class="fas fa-crosshairs"></i> 
+                    <span>Objetivos</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="conteudo-principal">
+        <div class="caixa-texto">
+            <h1><i class="fas fa-crosshairs"></i> Meus Objetivos</h1>
+            
+            <p>Aqui estão meus objetivos para o intercâmbio e minha jornada rumo à Coreia do Sul:</p>
+            
+            <p><span class="destaque">1.</span> Aprender coreano até o nível intermediário/avançado.</p>
+            <p><span class="destaque">2.</span> Conquistar uma vaga em uma universidade coreana.</p>
+            <p><span class="destaque">3.</span> Desenvolver projetos de tecnologia com colaboração internacional.</p>
+            <p><span class="destaque">4.</span> Construir uma rede de contatos acadêmicos e profissionais na Coreia.</p>
+
+            <div class="foto-rodape-sobre">
+                <img src="minha_foto.jpg" alt="Objetivos e jornada">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Criado por [Seu Nome] - Focado no futuro!</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const btnBandeira = document.getElementById('btn-bandeira');
+            
+            if (!sidebar.contains(event.target) && !btnBandeira.contains(event.target)) {
+                if (sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

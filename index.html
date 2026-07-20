@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Intercâmbio - Coreia do Sul</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ==============================
+           1. ESTILOS GERAIS E CORES
+           ============================== */
+        :root {
+            --coreia-vermelho: #CD2E3A;
+            --coreia-azul: #0047A0;
+            --fundo-preto: #000000; 
+            --texto-claro: #ffffff;
+            --texto-cinza: #a0a0a0;
+            --tamanho-sidebar: 300px;
+        }
+
+        body {
+            background-color: var(--fundo-preto);
+            color: var(--texto-claro);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* ==============================
+           2. HERO SECTION
+           ============================== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .foto-perfil {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid rgb(93, 0, 255);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin: 10px 0;
+            background: linear-gradient(90deg, var(--coreia-azul), var(--coreia-vermelho));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: var(--texto-cinza);
+        }
+
+        /* ==============================
+           3. ELEMENTOS FLUTUANTES
+           ============================== */
+        .floating-element {
+            position: absolute;
+            font-size: 2.5em;
+            color: var(--texto-claro);
+            opacity: 0.3; 
+            animation: float 10s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        .icon-code      { left: 15%; animation-duration: 12s; color: #61dafb; }
+        .icon-plane     { left: 35%; animation-duration: 9s; color: var(--coreia-azul); }
+        .icon-book      { left: 65%; animation-duration: 11s; color: var(--coreia-vermelho); }
+        .icon-laptop    { left: 85%; animation-duration: 14s; color: var(--texto-cinza); }
+
+        /* ==============================
+           4. MENU LATERAL SEM LINHAS E SEM 'X'
+           ============================== */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .bandeira-icone {
+            font-size: 2em;
+            color: var(--coreia-azul);
+            position: relative;
+        }
+        .bandeira-icone::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--coreia-vermelho);
+            border-radius: 50%;
+            top: -5px;
+            right: -5px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: calc(-1 * var(--tamanho-sidebar));
+            width: var(--tamanho-sidebar);
+            height: 100vh;
+            background-color: var(--fundo-preto);
+            z-index: 999;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding-top: 100px;
+            /* A linha de borda foi removida daqui! */
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0 20px;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: var(--texto-cinza);
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            border-radius: 12px;
+            background: transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, background 0.3s ease;
+        }
+
+        .sidebar a i {
+            font-size: 1.4em;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            color: white;
+            transform: scale(1.08); 
+            background-color: rgba(20, 20, 20, 0.9);
+            box-shadow: 
+                -10px 10px 30px rgba(0, 71, 160, 0.5), 
+                10px -10px 30px rgba(205, 46, 58, 0.5); 
+            z-index: 10;
+            position: relative;
+        }
+
+        .sidebar a:hover i {
+            transform: scale(1.1);
+        }
+
+        /* ==============================
+           5. RODAPÉ SEM LINHA
+           ============================== */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--fundo-preto);
+            color: #444; 
+            position: relative;
+            z-index: 10;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" onclick="toggleMenu()" id="btn-bandeira">
+        <span class="bandeira-icone">🇰🇷</span>
+    </div>
+
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li>
+                <a href="#hero">
+                    <i class="fas fa-home"></i> 
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="sobre.html">
+                    <i class="fas fa-user-astronaut"></i> 
+                    <span>Sobre Mim</span>
+                </a>
+            </li>
+            <li>
+                <a href="por-que-coreia.html">
+                    <i class="fas fa-map-marked-alt"></i> 
+                    <span>Por que a Coreia?</span>
+                </a>
+            </li>
+            <li>
+                <a href="meus-objetivos.html">
+                    <i class="fas fa-crosshairs"></i> 
+                    <span>Objetivos</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="hero">
+        <i class="fas fa-code floating-element icon-code"></i>
+        <i class="fas fa-plane-departure floating-element icon-plane"></i>
+        <i class="fas fa-laptop-code floating-element icon-laptop"></i>
+
+        <div class="hero-content">
+            <img src="minha_foto.jpg" alt="Foto de Perfil" class="foto-perfil">
+            <h1>Domingos Van-Dúnem</h1>
+            <p>Futuro Intercambista em Seul | Dev em Formação</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Criado por Domingos Van-Dúnem - Focado no futuro!</p>
+    </footer>
+
+    <script>
+        // Função para abrir/fechar o menu clicando na bandeira
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Função moderna: Fecha o menu se clicar fora dele
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const btnBandeira = document.getElementById('btn-bandeira');
+            
+            // Verifica se o clique NÃO foi dentro do menu e NÃO foi na bandeira
+            if (!sidebar.contains(event.target) && !btnBandeira.contains(event.target)) {
+                // Se o menu estiver aberto, ele fecha
+                if (sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
