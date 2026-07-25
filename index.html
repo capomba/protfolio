@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Intercâmbio - Coreia do Sul</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
     <style>
         /* ==============================
            1. ESTILOS GERAIS E CORES
@@ -204,40 +205,41 @@
 </head>
 <body>
 
-    <div class="menu-toggle" onclick="toggleMenu()" id="btn-bandeira">
-        <span class="bandeira-icone">🇰🇷</span>
-    </div>
+    <header>
+        <div class="menu-toggle" onclick="toggleMenu()" id="btn-bandeira">
+            <span class="bandeira-icone">🇰🇷</span>
+        </div>
+        <nav class="sidebar" id="sidebar">
+            <ul>
+                <li>
+                    <a href="#hero">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="sobre.html">
+                        <i class="fas fa-user-astronaut"></i>
+                        <span>Sobre Mim</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="por-que-coreia.html">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>Por que a Coreia?</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="meus-objetivos.html">
+                        <i class="fas fa-crosshairs"></i>
+                        <span>Objetivos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-    <nav class="sidebar" id="sidebar">
-        <ul>
-            <li>
-                <a href="#hero">
-                    <i class="fas fa-home"></i> 
-                    <span>Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="sobre.html">
-                    <i class="fas fa-user-astronaut"></i> 
-                    <span>Sobre Mim</span>
-                </a>
-            </li>
-            <li>
-                <a href="por-que-coreia.html">
-                    <i class="fas fa-map-marked-alt"></i> 
-                    <span>Por que a Coreia?</span>
-                </a>
-            </li>
-            <li>
-                <a href="meus-objetivos.html">
-                    <i class="fas fa-crosshairs"></i> 
-                    <span>Objetivos</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-    <section class="hero" id="hero">
+    <main class="hero" id="hero">
         <i class="fas fa-code floating-element icon-code"></i>
         <i class="fas fa-plane-departure floating-element icon-plane"></i>
         <i class="fas fa-laptop-code floating-element icon-laptop"></i>
@@ -247,7 +249,7 @@
             <h1>Domingos Van-Dúnem</h1>
             <p>Futuro Intercambista em Seul | Dev em Formação</p>
         </div>
-    </section>
+    </main>
 
     <footer>
         <p>Criado por Domingos Van-Dúnem - Focado no futuro!</p>

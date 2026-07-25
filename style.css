@@ -1,0 +1,35 @@
+main{
+    view-transition-name: conteudo-pagina;
+}
+
+@view-transition{
+    navigation: auto;
+}
+
+@keyframes saindo{
+    to{
+        transform: translateX(100%);
+    }
+}
+
+@keyframes entrando{
+    from{
+        transform: translateX(100%);
+    }
+}
+
+::view-transition(conteudo-pagina){
+    navigation: auto;
+}
+
+::view-transition-group(conteudo-pagina){
+    animation-duration: 3s;
+}
+
+::view-transition-old(conteudo-pagina){
+    animation-name: saindo;
+}
+
+::view-transition-new(conteudo-pagina){
+    animation-name: entrando;
+}

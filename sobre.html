@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Mim - Intercâmbio Coreia</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
     <style>
         /* ==============================
            1. ESTILOS GERAIS E CORES (Iguais à Home)
@@ -229,92 +230,95 @@
             z-index: 10;
         }
 
-        /* Adicione isso na sua tag <style> */
+            /* Adicione isso na sua tag <style> */
 
-.fundo-cinematografico {
-    /* O SEGREDO: O linear-gradient escurece a foto (80% preto no topo até 95% preto na base) */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95)), url('minha-foto.jpg');
+        .fundo-cinematografico {
+            /* O SEGREDO: O linear-gradient escurece a foto (80% preto no topo até 95% preto na base) */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95)), url('minha-foto.jpg');
     
-    /* Configurações da Imagem */
-    background-size: cover; /* Força a foto a preencher todo o espaço sem esticar/amassar */
-    background-position: center; /* Centraliza a imagem no seu rosto/corpo */
+            /* Configurações da Imagem */
+            background-size: cover; /* Força a foto a preencher todo o espaço sem esticar/amassar */
+            background-position: center; /* Centraliza a imagem no seu rosto/corpo */
+            
+            /* O EFEITO PARALLAX: A foto fica grudada na tela enquanto o texto rola por cima! */
+            background-attachment: fixed; 
     
-    /* O EFEITO PARALLAX: A foto fica grudada na tela enquanto o texto rola por cima! */
-    background-attachment: fixed; 
-    
-    /* Tamanho e Alinhamento do conteúdo dentro da caixa */
-    width: 100%;
-    min-height: 400px; /* A altura que essa faixa vai ter na tela */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    
-    /* Detalhes para combinar com o seu site */
-    border-radius: 15px;
-    border-top: 2px solid var(--coreia-vermelho); /* Detalhe vermelho em cima */
-    border-bottom: 2px solid var(--coreia-azul); /* Detalhe azul embaixo */
-    margin: 40px 0;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.9);
-}
+            /* Tamanho e Alinhamento do conteúdo dentro da caixa */
+            width: 100%;
+            min-height: 400px; /* A altura que essa faixa vai ter na tela */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            
+            /* Detalhes para combinar com o seu site */
+            border-radius: 15px;
+            border-top: 2px solid var(--coreia-vermelho); /* Detalhe vermelho em cima */
+            border-bottom: 2px solid var(--coreia-azul); /* Detalhe azul embaixo */
+            margin: 40px 0;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.9);
+        }
 
-/* Deixando o texto lá dentro bem destacado */
-.conteudo-fundo h2 {
-    color: white;
-    font-size: 2.5em;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 2px; /* Espaça as letras para dar ar de filme */
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Um brilho suave no texto */
-}
+        /* Deixando o texto lá dentro bem destacado */
+        .conteudo-fundo h2 {
+            color: white;
+            font-size: 2.5em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px; /* Espaça as letras para dar ar de filme */
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Um brilho suave no texto */
+        }
 
-.conteudo-fundo p {
-    color: var(--texto-cinza);
-    font-size: 1.2em;
-    margin-top: 10px;
-}
+        .conteudo-fundo p {
+            color: var(--texto-cinza);
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        
     </style>
 </head>
 <body>
 
-    <div class="menu-toggle" onclick="toggleMenu()" id="btn-bandeira">
-        <span class="bandeira-icone">🇰🇷</span>
-    </div>
-
-    <nav class="sidebar" id="sidebar">
-        <ul>
-            <li>
-                <a href="index.html">
-                    <i class="fas fa-home"></i> 
-                    <span>Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="sobre.html">
-                    <i class="fas fa-user-astronaut"></i> 
-                    <span>Sobre Mim</span>
-                </a>
-            </li>
-            <li>
-                <a href="por-que-coreia.html">
-                    <i class="fas fa-map-marked-alt"></i> 
-                    <span>Por que a Coreia?</span>
-                </a>
-            </li>
-            <li>
-                <a href="meus-objetivos.html">
-                    <i class="fas fa-crosshairs"></i> 
-                    <span>Objetivos</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <header>
+        <div class="menu-toggle" onclick="toggleMenu()" id="btn-bandeira">
+            <span class="bandeira-icone">🇰🇷</span>
+        </div>
+        <nav class="sidebar" id="sidebar">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="sobre.html">
+                        <i class="fas fa-user-astronaut"></i>
+                        <span>Sobre Mim</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="por-que-coreia.html">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>Por que a Coreia?</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="meus-objetivos.html">
+                        <i class="fas fa-crosshairs"></i>
+                        <span>Objetivos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
     <main class="conteudo-principal">
         <div class="caixa-texto">
             <h1><i class="fas fa-user-astronaut"></i> Quem sou eu</h1>
             
-            <p>Olá! Meu nome é <span class="destaque">[Seu Nome]</span>, tenho <span class="destaque">[Sua Idade]</span> anos e escrevo diretamente de Angola. Sou apaixonado por tecnologia, programação e culturas asiáticas.</p>
+            <p>Olá! Meu nome é <span class="destaque">Domingos Van-Dúnem</span>, tenho <span class="destaque">17</span> anos atualmente e escrevo diretamente de Angola. Sou apaixonado por tecnologia, programação e culturas asiáticas.</p>
             
             <p>Desde cedo, percebi que não gosto de seguir o caminho mais comum. Gosto de criar, inovar e procurar desafios que me tirem da zona de conforto. É exatamente por isso que estou focado em construir minha jornada rumo à <span class="destaque">Coreia do Sul</span>.</p>
             
@@ -327,7 +331,7 @@
     </main>
 
     <footer>
-        <p>Criado por [Seu Nome] - Focado no futuro!</p>
+        <p>Criado por Domingos Van-Dúnem - Focado no futuro!</p>
     </footer>
 
     <script>
